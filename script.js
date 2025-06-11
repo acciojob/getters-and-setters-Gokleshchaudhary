@@ -1,18 +1,9 @@
-{
-    "name": "your-project-name",
-    "version": "1.0.0",
-    "type": "module",
-    "scripts": {
-        "test": "cypress open"
-    },
-    "devDependencies": {
-        "cypress": "^X.X.X" // Replace with your Cypress version
-    }
-}
+// script.js
+
 export class Person {
     constructor(name, age) {
-        this._name = name;
-        this._age = age;
+        this._name = name; // Private variable
+        this._age = age;   // Private variable
     }
 
     get name() {
@@ -39,6 +30,7 @@ export class Teacher extends Person {
         console.log(`${this.name} is teaching`);
     }
 }
+// test.spec.js
 import { Person, Student, Teacher } from './script.js'; // Ensure correct path
 
 describe('example to-do app', () => {
@@ -59,25 +51,13 @@ describe('example to-do app', () => {
         expect(person.age).to.equal(30);
     });
 
-    it('John should study', () => {
-        cy.spy(console, 'log');
-        student.study();
-        expect(console.log).to.be.calledWith('Alice is studying');
-    });
-
     it('Alice should study', () => {
         cy.spy(console, 'log');
         student.study();
         expect(console.log).to.be.calledWith('Alice is studying');
     });
 
-    it('John should teach', () => {
-        cy.spy(console, 'log');
-        teacher.teach();
-        expect(console.log).to.be.calledWith('Bob is teaching');
-    });
-
-    it('Alice should teach', () => {
+    it('Bob should teach', () => {
         cy.spy(console, 'log');
         teacher.teach();
         expect(console.log).to.be.calledWith('Bob is teaching');
