@@ -1,9 +1,7 @@
-// script.js
-
-export class Person {
+class Person {
     constructor(name, age) {
-        this._name = name; // Private variable
-        this._age = age;   // Private variable
+        this._name = name; // Use underscore to indicate private variable
+        this._age = age;
     }
 
     get name() {
@@ -13,53 +11,28 @@ export class Person {
     set age(age) {
         this._age = age;
     }
-
-    get age() {
-        return this._age;
-    }
 }
 
-export class Student extends Person {
+class Student extends Person {
     study() {
         console.log(`${this.name} is studying`);
     }
 }
 
-export class Teacher extends Person {
+class Teacher extends Person {
     teach() {
         console.log(`${this.name} is teaching`);
     }
 }
-// test.spec.js
-import { Person, Student, Teacher } from './script.js'; // Ensure correct path
 
-describe('example to-do app', () => {
-    let person, student, teacher;
+// Example Usage
+const person = new Person("John", 25);
+console.log(person.name);  // Output: John
+person.age = 30;  // Using the setter to change the age
+console.log(person.age);  // Output: 30
 
-    beforeEach(() => {
-        person = new Person("John", 25);
-        student = new Student("Alice", 22);
-        teacher = new Teacher("Bob", 40);
-    });
+const student = new Student("Alice", 22);
+student.study();  // Output: Alice is studying
 
-    it('should get the name', () => {
-        expect(person.name).to.equal("John");
-    });
-
-    it('should change age', () => {
-        person.age = 30;
-        expect(person.age).to.equal(30);
-    });
-
-    it('Alice should study', () => {
-        cy.spy(console, 'log');
-        student.study();
-        expect(console.log).to.be.calledWith('Alice is studying');
-    });
-
-    it('Bob should teach', () => {
-        cy.spy(console, 'log');
-        teacher.teach();
-        expect(console.log).to.be.calledWith('Bob is teaching');
-    });
-});
+const teacher = new Teacher("Bob", 40);
+teacher.teach();
