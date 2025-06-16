@@ -1,7 +1,8 @@
-class Person {
+
+export class Person {
     constructor(name, age) {
-        this._name = name; // Use underscore to indicate private variable
-        this._age = age;
+        this._name = name; // Private variable
+        this._age = age;   // Private variable
     }
 
     get name() {
@@ -11,15 +12,19 @@ class Person {
     set age(age) {
         this._age = age;
     }
+
+    get age() {
+        return this._age;
+    }
 }
 
-class Student extends Person {
+export class Student extends Person {
     study() {
         console.log(`${this.name} is studying`);
     }
 }
 
-class Teacher extends Person {
+export class Teacher extends Person {
     teach() {
         console.log(`${this.name} is teaching`);
     }
